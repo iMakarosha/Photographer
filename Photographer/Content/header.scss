@@ -1,0 +1,59 @@
+﻿header.navbar {
+    border-bottom: none!important;
+
+    .header-menu--logo {
+        padding-top: 6px;
+
+        a {
+            font-family: "Rubik Mono One", sans-serif;
+            font-size: 30px;
+            &:hover{
+                text-decoration:none;
+            }
+        }
+    }
+
+    .header-menu--links > li > a {
+        display: block;
+        font-family: 'Noto Sans', sans-serif;
+        padding: 20px 15px 10px 15px;
+        font-weight: 600;
+        height: 100%;
+        border-right: 1px solid #1e1e1e;
+        transition: all .3s ease-out;
+        text-transform: uppercase;
+    }
+}
+
+
+.img-background {
+    background-size: cover;
+    background-position: center;
+    min-height: 12rem;
+    text-align: center;
+    padding: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.5) 200vh 200vw 0px inset;
+
+    h1 {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 4.5px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    &.service {
+        background-image: url('../images/Carousel/back1.jpg');
+    }
+
+    &.portfolio {
+        background-image: url('../images/Carousel/back2.jpg');
+    }
+
+    &.about {
+        background-image: url('../images/Carousel/back3.jpg');
+    }
+
+    &.contact {
+        background-image: url('../images/Carousel/back4.jpg');
+    }
+}

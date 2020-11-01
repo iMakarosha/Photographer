@@ -1,0 +1,131 @@
+﻿$c1: #fff;
+$c2: #222;
+$c3: #ccc;
+$c4: #eda93b;
+$c5: #bea79e;
+$c6: #8f5d44;
+
+.c-t-1{
+    color: $c1;
+}
+.c-t-2{
+    color: $c2;
+}
+.c-t-3{
+    color: $c3;
+}
+.c-t-4{
+    color: $c4;
+}
+.c-t-5 {
+    color: $c5;
+}
+
+.c-l-1 {
+    color: $c1;
+    &:hover{
+        color: darken($c1, 10%);
+    }
+}
+
+.c-l-2 {
+    color: $c2;
+
+    &:hover {
+        color: darken($c2, 10%);
+    }
+}
+
+.c-l-3 {
+    color: $c3;
+
+    &:hover {
+        color: darken($c3, 10%);
+    }
+}
+
+.c-l-4 {
+    color: $c4;
+
+    &:hover {
+        color: darken($c4, 10%);
+    }
+}
+
+.c-bg-6{
+    background-color: $c6;
+    &:hover{
+        background-color: darken($c6, 10%);
+    }
+}
+
+body{
+    color: $c5;
+}
+
+a {
+    color: $c1;
+
+    &:hover {
+        color: $c3;
+    }
+}
+
+hr {
+    border-color: $c4;
+    opacity: 0.3;
+}
+
+header.navbar {
+    .header-menu--links > li > a {
+        color: $c1;
+
+        &:hover {
+            background: $c4;
+        }
+    }
+}
+
+.btn-yellow {
+    color: $c1;
+    background: $c4;
+    border: 1px solid darken($c4, 10%);
+    padding: 10px 30px;
+    transition: .5s;
+
+    &:hover {
+        color: $c1;
+        background-color: darken($c4, 5%);
+    }
+}
+.nav-tabs > li {
+    &.active {
+        & > a, & > a:hover, & > a:focus {
+            color: $c1;
+            background: $c4;
+            border: 1px solid darken($c4, 10%);
+        }
+    }
+
+    a:hover {
+        border-color: darken($c4, 10%) darken($c4, 10%) darken($c4, 10%);
+    }
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    color: $c1;
+    background-color: darken($c4, 5%);
+}
+.manage-item {
+
+    a {
+        svg {
+            fill: $c5;
+            transition: .5s;
+        }
+        &:hover{
+            svg{
+                fill: $c1;
+            }
+        }
+    }
+}

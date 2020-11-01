@@ -1,0 +1,176 @@
+﻿/*home*/
+section.carousel-section {
+    padding: 0;
+    margin: 0 -15px;
+
+    .carousel-caption {
+        text-shadow: 0 0 4px black;
+
+        h3 {
+            text-transform: uppercase;
+        }
+
+        .carousel-description {
+            padding: 1rem 0;
+        }
+    }
+
+    .item {
+        button {
+            margin-top: 1rem;
+        }
+
+        img {
+            filter: brightness(0.8);
+        }
+    }
+
+    .item-1 .carousel-caption {
+        text-align: left;
+    }
+
+    .item-2 .carousel-caption {
+        text-align: right;
+    }
+}
+.portfolio-block-header {
+    text-transform: uppercase;
+}
+.portfolio-block-description {
+    padding: 14px 0;
+}
+
+.btn-round {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.about-us-section{
+    align-items: center;
+}
+
+.about-photo-section  {
+    .flex {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+
+    .about-photo-description {
+        padding-left: 2rem;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .carousel-caption {
+        height: 40%;
+    }
+}
+
+/*endhome*/
+
+
+/*contacts*/
+.contact {
+    .social-buttons {
+        margin-left: -10px;
+
+        a svg {
+            width: 36px !important;
+            height: 36px !important;
+            background-color: white;
+            border-radius: 0.875rem;
+        }
+    }
+
+    .contact-block {
+        padding-top: 8%;
+    }
+
+    .contact-phone {
+        font-size: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .contact-phone, address {
+        padding-top: 1rem;
+    }
+}
+/*endcontacts*/
+
+
+/*service*/
+.service {
+    .service-price {
+        font-size: 18px;
+
+        b {
+            padding-right: 10px;
+        }
+    }
+
+    .service-description {
+        padding: 1rem 0 1.5rem 0;
+
+        ul {
+            padding-top: 1rem;
+        }
+    }
+
+    .service-block {
+        padding: 30px;
+    }
+}
+/*endservice*/
+
+/*portfolio*/
+.portfolio-image {
+    padding-top: 2rem;
+}
+
+/*endportfolio*/
+
+/*about*/
+.about {
+    .about-free-photo {
+        align-items: center;
+    }
+
+    input {
+        padding: 1rem 2rem;
+        margin-top: 2rem;
+        width: 300px;
+        border: 1px solid #6f4a37;
+    }
+}
+
+/*endabout*/
+
+/*manage*/
+.manage{
+    .tab-pane{
+        padding-top: 1rem;
+    }
+}
+.albums, .categories {
+    padding-bottom: 3rem;
+}
+.manage-item, .add-album, .add-category {
+    justify-content: space-between;
+    align-items: center;
+}
+.add-album, .add-category{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+}
+.manage-item {
+    padding-top: 1rem;
+    border-bottom: 1px solid #eeeeee21;
+    a, a:hover{
+        text-decoration: none;
+    }
+}
+/*endmanage*/

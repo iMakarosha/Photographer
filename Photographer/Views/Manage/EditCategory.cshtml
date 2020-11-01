@@ -1,0 +1,21 @@
+﻿@model Photographer.Models.Category
+
+@using (Html.BeginForm("SaveCategory", "Manage", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div class="hidden">
+        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="editor-label col-xs-4">
+        @Html.Label("Категория")
+    </div>
+    <div class="editor-field col-xs-8">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name)
+
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-4 p-t-sm">
+        <input type="submit" value="Сохранить изменения" class="btn btn-yellow" />
+    </div>
+}

@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "Content/header.css",
+    "inputFile": "Content/header.scss"
+  },
+  {
+    "outputFile": "Content/general.css",
+    "inputFile": "Content/general.scss"
+  },
+  {
+    "outputFile": "Content/footer.css",
+    "inputFile": "Content/footer.scss"
+  },
+  {
+    "outputFile": "Content/colorscheme.css",
+    "inputFile": "Content/colorscheme.scss"
+  },
+  {
+    "outputFile": "Content/pages.css",
+    "inputFile": "Content/pages.scss"
+  }
+]

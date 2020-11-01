@@ -1,0 +1,79 @@
+﻿html, body {
+  overflow-x: hidden;
+  background: url("../images/backgroung.jpg"); }
+
+a {
+  text-decoration: none;
+  cursor: pointer; }
+
+body {
+  padding-top: 50px;
+  font-size: 14px;
+  font-family: "Montserrat"; }
+
+.conteiner {
+  max-width: 960px;
+  margin: 0 auto; }
+
+section {
+  padding: 50px 0; }
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto; }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal; }
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 360px; }
+
+input {
+  padding: 1rem 2rem; }
+
+.flex {
+  display: flex;
+  flex-direction: row; }
+
+.space-between {
+  justify-content: space-between; }
+
+.baseline {
+  align-items: baseline; }
+
+.p-t-md {
+  padding-top: 30px; }
+
+.p-b-md {
+  padding-bottom: 30px; }
+
+.p-t-sm {
+  padding-top: 15px; }
+
+.p-b-sm {
+  padding-bottom: 15px; }
+
+.body-content {
+  min-height: calc(100vh - 110px); }
+
+.inline {
+  display: inline; }
+
+.btn-sm {
+  padding: 6px 12px; }
+
+.modal-content {
+  color: #000; }
+  .modal-content .modal-header {
+    text-align: center; }
+
+.hidden {
+  display: none; }
