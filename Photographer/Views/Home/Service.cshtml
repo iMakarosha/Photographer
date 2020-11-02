@@ -1,7 +1,7 @@
-﻿@{
-    ViewBag.Title = "Service";
+﻿@model Photographer.Models.BookingUser
+@{ 
+    var services = new Photographer.Services.PhotoService().GetServices();
 }
-
 <div class="container-fluid img-background service">
     <section class="">
         <h1 class="c-t-1">Услуги</h1>
@@ -18,7 +18,7 @@
                     <h3 class="c-t-1">Получасовая съемка (30 минут)</h3>
 
                     <div class="service-price">
-                        <span><b class="c-t-1">RUB 2000</b></span><span><s>RUB 1500</s></span>
+                        <span><b class="c-t-1">RUB 2000</b></span><span><s>RUB 2500</s></span>
                     </div>
                     <div class="service-description">
                         <div><b>Описание</b></div>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="service-button">
-                        <button class="btn btn-yellow">Забронировать</button>
+                        <button class="btn btn-yellow" data-toggle="modal" data-target="#addBookingModal">Забронировать</button>
                     </div>
                 </div>
             </div>
@@ -51,10 +51,10 @@
                     <h3 class="c-t-1">Индивидуальная съемка</h3>
 
                     <div class="service-price">
-                        <span><b class="c-t-1">RUB 3200</b></span><span><s>RUB 2800</s></span>
+                        <span><b class="c-t-1">RUB 3200</b></span><span><s>RUB 3800</s></span>
                     </div>
                     <div class="service-description">
-                        <div><b>Описание</b></div>                        
+                        <div><b>Описание</b></div>
                         <div>
                             Этот пакет идеально подходит для любых других необходимых и теплых моментов жизни, которые хочется запечатлеть на снимках. Индивидуальный подбор образа и локации.
                         </div>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="service-button">
-                        <button class="btn btn-yellow">Забронировать</button>
+                        <button class="btn btn-yellow" data-toggle="modal" data-target="#addBookingModal">Забронировать</button>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="service-button">
-                        <button class="btn btn-yellow">Забронировать</button>
+                        <button class="btn btn-yellow" data-toggle="modal" data-target="#addBookingModal">Забронировать</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                         </div>
                     </div>
                     <div class="service-button">
-                        <button class="btn btn-yellow">Забронировать</button>
+                        <button class="btn btn-yellow" data-toggle="modal" data-target="#addBookingModal">Забронировать</button>
                     </div>
                 </div>
             </div>
@@ -178,7 +178,7 @@
                         </div>
                     </div>
                     <div class="service-button">
-                        <button class="btn btn-yellow">Забронировать</button>
+                        <button class="btn btn-yellow" data-toggle="modal" data-target="#addBookingModal">Забронировать</button>
                     </div>
                 </div>
             </div>
@@ -186,3 +186,69 @@
         </div>
     </section>
 </div>
+
+<div class="modal fade" id="addBookingModal" tabindex="-1" role="dialog" aria-labelledby="addBookingModalBtn">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2>Забронировать фотосессию</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 p-b-sm">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            @*<div class="hidden">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+            </div>*@
+                            <div class="editor-label col-xs-4">
+                                @Html.Label("Ваше имя")
+                            </div>
+                            <div class="editor-field col-xs-8">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "UserName", required = "required", placeholder = "Например, Алексей" } })
+                                @Html.ValidationMessageFor(model => model.Name)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Email")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "UserEmail", required = "required", placeholder = "mail@mail.ru" } })
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Телефон")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control phone", id = "UserPhone", required = "required", placeholder = "+7 (900) 000-0000" } })
+                                @Html.ValidationMessageFor(model => model.Phone)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Комментарий")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control", id = "UserComment" } })
+                                @Html.ValidationMessageFor(model => model.Comment)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Тип фотосессии")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.DropDownListFor(model => model.ServiceId, new SelectList(services, "Id", "Name", 1), htmlAttributes: new { id = "ServiceSelect", @class = "form-control" })
+                            </div>
+                            <div class="col-xs-8 col-xs-offset-4 p-t-sm">
+                                <button type="submit" class="btn btn-yellow" id="addBookingInput">Забронировать</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/booking-scripts.js")
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Photographer.Models;
+using Photographer.Services;
 
 namespace Photographer.Controllers
 {
@@ -16,29 +17,24 @@ namespace Photographer.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(new AboutViewModel
+            {
+                photos = new PhotoService().GetAlbumPhotos(7).ToList()
+            });
         }
 
         public ActionResult Portfolio()
         {
-            ViewBag.Message = "Your portfolio page.";
-
-            return View();
+            return View(new PhotoService().GetPortfolio());
         }
 
         public ActionResult Service()
         {
-            ViewBag.Message = "Your service page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -46,6 +42,19 @@ namespace Photographer.Controllers
         {
             ViewBag.Message = message;
             return PartialView();
+        }
+
+        public JsonResult AddBooking(string name, string email, string phone, string comment, string service)
+        {
+            try
+            {
+                new PhotoService().AddBooking(name, email, phone, comment, Convert.ToInt32(service));
+                return Json("ok");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
         }
     }
 }

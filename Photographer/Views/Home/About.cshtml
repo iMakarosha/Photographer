@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "About";
-}
+﻿@model Photographer.Models.AboutViewModel
+
 <div class="container-fluid img-background about">
     <section class="">
         <h1 class="c-t-1">О фотографе</h1>
@@ -20,18 +19,18 @@
             </div>
         </div>
         <div class="row p-t-md">
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-sm-8">
                 <img src="~/images/About/item(1).jpg" />
             </div>
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-sm-4">
                 <img src="~/images/About/item(3).jpg" />
             </div>
         </div>
         <div class="row p-t-md">
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-sm-4">
                 <img src="~/images/About/item(5).jpg" />
             </div>
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-sm-8">
                 <img src="~/images/About/item(2).jpg" />
             </div>
         </div>
@@ -58,37 +57,16 @@
     <hr/>
     <section>
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="portfolio-image">
-                    <img src="~/images/About/item(4).jpg" />
+            @foreach (Photographer.Models.Photo photo in Model.photos)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="portfolio-image">
+                        <img src="~/images/Photosession/@(photo.Id + "_sm.jpg")"  />
+                    </div>
                 </div>
+
+            }
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="portfolio-image">
-                    <img src="~/images/About/item(7).jpg" />
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="portfolio-image">
-                    <img src="~/images/About/item(4).jpg" />
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="portfolio-image">
-                    <img src="~/images/About/item(7).jpg" />
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="portfolio-image">
-                    <img src="~/images/About/item(4).jpg" />
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="portfolio-image">
-                    <img src="~/images/About/item(7).jpg" />
-                </div>
-            </div>
-        </div>
     </section>
     <hr/>
     <section>

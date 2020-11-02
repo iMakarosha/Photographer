@@ -186,6 +186,48 @@ namespace Photographer.Controllers
             }
         }
 
+        public JsonResult DeleteBooking(int bookingId)
+        {
+            try
+            {
+                new PhotoService().DeleteBooking(bookingId);
+                return Json("ok");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        public JsonResult AddPhoto()
+        {
+            try
+            {
+                new PhotoService().AddPhoto(Request.Files, Request.Form["photoAlbum"]);
+                //new PhotoService().AddPhoto(categoryName);
+                return Json("ok");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
+        }
+
+        public JsonResult DeletePhoto(int photoId)
+        {
+            try
+            {
+                new PhotoService().DeletePhoto(photoId);
+                return Json("ok");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
+        }
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]

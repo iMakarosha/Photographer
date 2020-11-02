@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Photographer.Models.BookingUser
+@{
+    var services = new Photographer.Services.PhotoService().GetServices();
 }
 
 <div class="container-fluid">
@@ -20,7 +21,7 @@
                         <div class="carousel-description">
                             Ретушь фотографий, наложение фильтров, исправление дефектов<br />включены в стоимость фотосессии.
                         </div>
-                        <button class="btn btn-yellow">Записаться</button>
+                        <button class="btn btn-yellow"  data-toggle="modal" data-target="#addBookingModal">Записаться</button>
                     </div>
                 </div>
                 <div class="item item-2">
@@ -30,7 +31,7 @@
                         <div class="carousel-description">
                             Подберем необычные красивые места для съемки,<br />от фотостудий до крыш новостроек.
                         </div>
-                        <button class="btn btn-yellow">Записаться</button>
+                        <button class="btn btn-yellow"  data-toggle="modal" data-target="#addBookingModal">Записаться</button>
                     </div>
                 </div>
 
@@ -52,7 +53,7 @@
         <div class="row">
             <div class="col-md-4 portfolio-block">
                 <h3 class="portfolio-block-header">
-                    <a class="c-l-1">
+                    <a class="c-l-1" href="/Home/About">
                         Свежее
                     </a>
                 </h3>
@@ -63,7 +64,7 @@
             </div>
             <div class="col-md-4 portfolio-block">
                 <h3 class="portfolio-block-header">
-                    <a class="c-l-1">
+                    <a class="c-l-1" href="/Home/Services">
                         Креативное
                     </a>
                 </h3>
@@ -74,7 +75,7 @@
             </div>
             <div class="col-md-4 portfolio-block">
                 <h3 class="portfolio-block-header">
-                    <a class="c-l-1">
+                    <a class="c-l-1" href="/Home/Portfolio">
                         Разное
                     </a>
                 </h3>
@@ -88,7 +89,7 @@
     <hr />
     <section class="about-us-section">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-xs-12 col-sm-8 col-md-9">
                 <h2 class="c-t-4">
                     ПРИВЕТ! МЕНЯ ЗОВУТ МАРК ДЖОНСОН. ЭТО САЙТ ЛИЧНОГО ПОРТФОЛИО.
                 </h2>
@@ -96,15 +97,15 @@
                     Фотография для меня нечто большее, чем работа – способность увидеть живые эмоции, красоту и уникальность каждого человека. Фотографией я стала заниматься профессионально около 3х лет назад, и сейчас, оглядываясь назад и немножко заглядывая вперед, могу смело сказать, что любовь к творческим оригинальным фотографиям и ярким «застывшим в цифре» эмоциям становится с каждым годом только крепче.
                 </div>
             </div>
-            <div class="col-md-3">
-                <button class="btn btn-round c-bg-6 c-l-1">Заказать услуги</button>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <button class="btn btn-round c-bg-6 c-l-1"  data-toggle="modal" data-target="#addBookingModal">Заказать услуги</button>
             </div>
         </div>
     </section>
     <hr />
     <section class="about-photo-section">
         <div class="row">
-            <div class="col-md-6 flex">
+            <div class="col-xs-12 col-sm-6 flex">
                 <div class="about-photo-image">
                     <img src="~/images/Icons/icon1.png" />
                 </div>
@@ -117,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 flex">
+            <div class="col-xs-12 col-sm-6 flex">
                 <div class="about-photo-image">
                     <img src="~/images/Icons/icon2.png" />
                 </div>
@@ -130,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 flex">
+            <div class="col-xs-12 col-sm-6 flex">
                 <div class="about-photo-image">
                     <img src="~/images/Icons/icon3.png" />
                 </div>
@@ -143,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 flex">
+            <div class="col-xs-12 col-sm-6 flex">
                 <div class="about-photo-image">
                     <img src="~/images/Icons/icon4.png" />
                 </div>
@@ -159,3 +160,69 @@
         </div>
     </section>
 </div>
+
+<div class="modal fade" id="addBookingModal" tabindex="-1" role="dialog" aria-labelledby="addBookingModalBtn">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2>Забронировать фотосессию</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 p-b-sm">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            @*<div class="hidden">
+                                    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>*@
+                            <div class="editor-label col-xs-4">
+                                @Html.Label("Ваше имя")
+                            </div>
+                            <div class="editor-field col-xs-8">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "UserName", required = "required", placeholder = "Например, Алексей" } })
+                                @Html.ValidationMessageFor(model => model.Name)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Email")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "UserEmail", required = "required", placeholder = "mail@mail.ru" } })
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Телефон")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control phone", id = "UserPhone", required = "required", placeholder = "+7 (900) 000-0000" } })
+                                @Html.ValidationMessageFor(model => model.Phone)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Комментарий")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control", id = "UserComment" } })
+                                @Html.ValidationMessageFor(model => model.Comment)
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Тип фотосессии")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.DropDownListFor(model => model.ServiceId, new SelectList(services, "Id", "Name", 1), htmlAttributes: new { id = "ServiceSelect", @class = "form-control" })
+                            </div>
+                            <div class="col-xs-8 col-xs-offset-4 p-t-sm">
+                                <button type="submit" class="btn btn-yellow" id="addBookingInput">Забронировать</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/booking-scripts.js")
+}

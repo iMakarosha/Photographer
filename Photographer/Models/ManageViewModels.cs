@@ -93,4 +93,40 @@ namespace Photographer.Models
         public List<Booking> bookings { get; set; }
         public List<Service> services { get; set; }
     }
+
+    public class AboutViewModel
+    {
+        public List<Photo> photos { get; set; }
+    }
+
+    public class AlbPortfolioViewModel
+    {
+        public string albumName { get; set; }
+        public List<int> photosId{ get; set; }
+    }
+
+    public class CatPortfolioViewModel
+    {
+        public string categoryName { get; set; }
+        public List<AlbPortfolioViewModel> albums { get; set; }
+    }
+
+    public class PortfolioViewModel
+    {
+        public List<CatPortfolioViewModel> categories { get; set; }
+    }
+
+    public class BookingUser
+    {
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [Phone]
+        public string Phone { get; set; }
+        public string Comment { get; set; }
+        public int ServiceId { get; set; }
+    }
 }

@@ -22,7 +22,6 @@
         @Html.Label("Категория")
     </div>
     <div class="editor-field col-xs-8 p-t-sm">
-
         @Html.DropDownListFor(model => model.CategoryId, new SelectList(categories, "Id", "Name", 1), htmlAttributes: new { id = "AlbumCategorySelect", @class= "form-control" })
     </div>
     <div class="col-xs-8 col-xs-offset-4 p-t-sm">

@@ -10,7 +10,7 @@
             <div class="col-xs-12">
                 <ul class="nav nav-tabs">
                     <li class="active"><a class="nav-link active" data-toggle="tab" href="#tab1">Фотографии</a></li>
-                    <li><a class="nav-link" data-toggle="tab" href="#tab2">Услуги</a></li>
+                    @*<li><a class="nav-link" data-toggle="tab" href="#tab2">Услуги</a></li>*@
                     <li><a class="nav-link" data-toggle="tab" href="#tab3">Брони</a></li>
                     <li><a class="nav-link" data-toggle="tab" href="#tab4">Мой аккаунт</a></li>
                 </ul>
@@ -21,20 +21,21 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="add-photo">
-                                            <button class="btn btn-yellow">Добавить фото</button>
+                                            <button class="btn btn-yellow" data-toggle="modal" data-target="#addPhotoModal">Добавить фото</button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row photo-row">
                                     @foreach (Photo photo in Model.photos)
                                     {
-                                        <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <div class="photo-block col-xs-12 col-sm-6 col-md-4">
                                             <div class="photo-container">
-                                                <div class="photo-buttons">
-                                                    <button class="btn">Х</button>
-                                                </div>
-                                                <img src="~/images/Photosession/small/@(photo.Id+"_sm.jpg")" />
+                                                <img src="~/images/Photosession/@(photo.Id+"_sm.jpg")" />
+                                                <a class="item-delete" href="#" onclick="deletePhoto(@photo.Id)">
+                                                    <svg height="20px" viewBox="-57 0 512 512" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="m156.371094 30.90625h85.570312v14.398438h30.902344v-16.414063c.003906-15.929687-12.949219-28.890625-28.871094-28.890625h-89.632812c-15.921875 0-28.875 12.960938-28.875 28.890625v16.414063h30.90625zm0 0" /><path d="m344.210938 167.75h-290.109376c-7.949218 0-14.207031 6.78125-13.566406 14.707031l24.253906 299.90625c1.351563 16.742188 15.316407 29.636719 32.09375 29.636719h204.542969c16.777344 0 30.742188-12.894531 32.09375-29.640625l24.253907-299.902344c.644531-7.925781-5.613282-14.707031-13.5625-14.707031zm-219.863282 312.261719c-.324218.019531-.648437.03125-.96875.03125-8.101562 0-14.902344-6.308594-15.40625-14.503907l-15.199218-246.207031c-.523438-8.519531 5.957031-15.851562 14.472656-16.375 8.488281-.515625 15.851562 5.949219 16.375 14.472657l15.195312 246.207031c.527344 8.519531-5.953125 15.847656-14.46875 16.375zm90.433594-15.421875c0 8.53125-6.917969 15.449218-15.453125 15.449218s-15.453125-6.917968-15.453125-15.449218v-246.210938c0-8.535156 6.917969-15.453125 15.453125-15.453125 8.53125 0 15.453125 6.917969 15.453125 15.453125zm90.757812-245.300782-14.511718 246.207032c-.480469 8.210937-7.292969 14.542968-15.410156 14.542968-.304688 0-.613282-.007812-.921876-.023437-8.519531-.503906-15.019531-7.816406-14.515624-16.335937l14.507812-246.210938c.5-8.519531 7.789062-15.019531 16.332031-14.515625 8.519531.5 15.019531 7.816406 14.519531 16.335937zm0 0" /><path d="m397.648438 120.0625-10.148438-30.421875c-2.675781-8.019531-10.183594-13.429687-18.640625-13.429687h-339.410156c-8.453125 0-15.964844 5.410156-18.636719 13.429687l-10.148438 30.421875c-1.957031 5.867188.589844 11.851562 5.34375 14.835938 1.9375 1.214843 4.230469 1.945312 6.75 1.945312h372.796876c2.519531 0 4.816406-.730469 6.75-1.949219 4.753906-2.984375 7.300781-8.96875 5.34375-14.832031zm0 0" /></svg>
+                                                </a>
+
                                             </div>
                                         </div>
                                     }
@@ -44,7 +45,7 @@
                                 <div class="albums">
                                     <div class="add-album flex">
                                         <span>Альбомы</span>
-                                        <button class="btn btn-yellow btn-sm"  data-toggle="modal" data-target="#addAlbumModal">+</button>
+                                        <button class="btn btn-yellow btn-sm" data-toggle="modal" data-target="#addAlbumModal">+</button>
                                     </div>
 
                                     @foreach (Album album in Model.albums)
@@ -56,9 +57,12 @@
                                                     <svg width="16px" height="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                                     <polygon points="51.2,353.28 0,512 158.72,460.8 		" />
+
                                                     <rect x="89.73" y="169.097" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -95.8575 260.3719)" width="353.277" height="153.599" />
+
                                                     <path d="M504.32,79.36L432.64,7.68c-10.24-10.24-25.6-10.24-35.84,0l-23.04,23.04l107.52,107.52l23.04-23.04
 		                                                C514.56,104.96,514.56,89.6,504.32,79.36z" />
+
                                                 </svg>
                                                 </a>
                                                 <a class="item-delete" href="#" onclick="deleteAlbum(@album.Id)">
@@ -83,9 +87,12 @@
                                                     <svg width="16px" height="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                                     <polygon points="51.2,353.28 0,512 158.72,460.8 		" />
+
                                                     <rect x="89.73" y="169.097" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -95.8575 260.3719)" width="353.277" height="153.599" />
+
                                                     <path d="M504.32,79.36L432.64,7.68c-10.24-10.24-25.6-10.24-35.84,0l-23.04,23.04l107.52,107.52l23.04-23.04
 		                                                C514.56,104.96,514.56,89.6,504.32,79.36z" />
+
                                                 </svg>
                                                 </a>
                                                 <a class="item-delete" href="#" onclick="deleteCategory(@category.Id)">
@@ -98,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="tab2">
+                    @*<div class="tab-pane fade" id="tab2">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="add-service">
@@ -114,6 +121,12 @@
                                         <div class="service-name">
                                             @service.Name
                                         </div>
+                                        <div class="service-price">
+                                            @service.Price
+                                        </div>
+                                        <div class="service-description">
+                                            @service.Description
+                                        </div>
                                         <div class="service-buttons">
                                             <button class="btn">Х</button>
                                         </div>
@@ -121,30 +134,62 @@
                                 </div>
                             }
                         </div>
-                    </div>
+                    </div>*@
                     <div class="tab-pane fade" id="tab3">
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-xs-12">
                                 <div class="add-photo">
                                     <button class="btn btn-yellow">Добавить бронь</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div>*@
+
+                        <table class="table">
+                            <tr>
+                                <th class="booking-cell booking-name">
+                                    Имя
+                                </th>
+                                <th class="booking-cell booking-phone">
+                                    Телефон
+                                </th>
+                                <th class="booking-cell booking-email">
+                                    Email
+                                </th>
+                                <th class="booking-cell booking-service">
+                                    Услуга
+                                </th>
+                                <th class="booking-cell booking-comment">
+                                    Комментарий
+                                </th>
+                                <th><span style="opacity: 0">saffd</span></th>
+                                <th class="booking-buttons">
+                                    Удалить
+                                </th>
+                            </tr>
                             @foreach (Booking booking in Model.bookings)
                             {
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <div class="booking-container">
-                                        <div class="booking-name">
-                                            @booking.Name , @booking.Phone , @booking.Email , @booking.Comment
-                                        </div>
-                                        <div class="booking-buttons">
-                                            <button class="btn">Х</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <tr class="booking-container">
+                                <td class="booking-cell booking-name">
+                                    @booking.Name
+                                </td>
+                                <td class="booking-cell booking-phone">
+                                    @booking.Phone
+                                </td>
+                                <td class="booking-cell booking-email">
+                                    @booking.Email
+                                </td>
+                                <td class="booking-cell booking-service">
+                                    @(new Photographer.Services.PhotoService().GetServiceName(booking.ServiceId))
+                                </td>
+                                <td colspan="2" class="booking-cell booking-comment">
+                                    @booking.Comment
+                                </td>
+                                <td class="booking-buttons">
+                                    <button class="btn" onclick="deleteBooking(@booking.Id)" style="color: #000;padding-top: .125rem;padding-bottom: .125rem;">Х</button>
+                                </td>
+                            </tr>
                             }
-                        </div>
+                        </table>
                     </div>
                     <div class="tab-pane fade" id="tab4">
                         <p class="text-success">@ViewBag.StatusMessage</p>
@@ -296,6 +341,49 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="addPhotoModal" tabindex="-1" role="dialog" aria-labelledby="addPhotoModalBtn">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2>Добавление фотографии</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 p-b-sm">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <div class="editor-label col-xs-4">
+                                @Html.Label("Фото")
+                            </div>
+                            <div class="editor-field col-xs-8">
+                                <input id="fileInput" class="form-control" type="file" @*multiple*@ accept=".jpg, .png" />
+                                @*@Html.Editor("Album", new { htmlAttributes = new { @class = "form-control", id = "AlbumName", type = "text" } })*@
+                            </div>
+                            <div class="editor-label col-xs-4 p-t-sm">
+                                @Html.Label("Альбом")
+                            </div>
+                            <div class="editor-field col-xs-8 p-t-sm">
+                                @Html.DropDownList("PhotoAlbum", Model.albums.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.Name.ToString()
+                                  }), htmlAttributes: new { id = "PhotoAlbum", @class= "form-control" })
+                            </div>
+
+                            <div class="col-xs-8 col-xs-offset-4 p-t-sm">
+                                <button type="submit" class="btn btn-yellow" id="addPhotoInput">Добавить</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section Scripts{
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js");
